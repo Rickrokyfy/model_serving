@@ -8,11 +8,11 @@ import keystoneclient.v3.client as ksclient
 from keystoneauth1 import loading
 from keystoneauth1 import session
 
-flavor = "ssc" 
-private_net = "SNIC Network"
+flavor = "ssc.medium" 
+private_net = "UPPMAX 2025/1-1 Internal IPv4 Network"
 floating_ip_pool_name = None
-floating_ip = None
-image_name = "image-id"
+floating_ip = "130.238.27.33"
+image_name = "Ubuntu 22.04 - 2024.01.15"
 
 identifier = random.randint(1000,9999)
 
@@ -55,7 +55,7 @@ print ("Creating instance .. ")
 #instance = nova.servers.create(name="prod_server_with_docker", image=image, flavor=flavor,userdata=userdata, nics=nics,security_groups=secgroups)
 
 # In case you want to login to the production server
-instance = nova.servers.create(name="prod_server_with_docker_"+str(identifier), image=image, flavor=flavor, key_name='<YOUR-KEY>',userdata=userdata, nics=nics,security_groups=secgroups)
+instance = nova.servers.create(name="prod_server_without_docker_rikard_ahlkvist_"+str(identifier), image=image, flavor=flavor, key_name='Dangen',userdata=userdata, nics=nics,security_groups=secgroups)
 inst_status = instance.status
 print ("waiting for 10 seconds.. ")
 time.sleep(10)
